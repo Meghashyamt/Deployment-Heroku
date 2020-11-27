@@ -18,9 +18,22 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Age" placehold7ed="required" />
+    	<style> 
+            input[type="text"]::placeholder {  
+                  
+                /* Firefox, Chrome, Opera */ 
+                text-align: center; 
+            } 
+            input[type="text"]::placeholder {  
+                  
+                /* Firefox, Chrome, Opera */ 
+                text-align: center; 
+            } 
 
-       <input type="text" name="Salary" placehold7ed="required" />
+   </style>
+    	<input type="text" name="Age" placehold7ed="required" placeholder="Age" />
+
+       <input type="text" name="Salary" placehold7ed="required" placeholder="Salary"/>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
