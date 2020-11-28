@@ -1,5 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
+from sklearn.preprocessing import StandardScaler
 import pickle
 
 app = Flask(__name__)
@@ -16,9 +17,11 @@ def predict():
     '''
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
+    sc=StandardScaler()
+    final_features=sc.fit_transform(final_features)
     prediction = model.predict(final_features)
 
-    output = round(prediction[0], 2)
+    output = prediction[0]
 
     return render_template('index.html', prediction_text='Purchase Predicted as {}'.format(output))
 
